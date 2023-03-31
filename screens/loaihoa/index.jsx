@@ -1,8 +1,10 @@
 import {
     Text,
     View,
+    ScrollView,
     SafeAreaView,
     TouchableOpacity,
+    ActivityIndicator,
     Image,
 } from "react-native";
 import styles from "./loaihoa.styles";
@@ -12,7 +14,7 @@ import { Card } from "../../components";
 
 import { icons, images } from "../../constants";
 
-const Loaihoa = () => {
+const Loaihoa = ({navigation}) => {
     const [loaihoa, setLoaihoa] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -24,9 +26,8 @@ const Loaihoa = () => {
                 const jsonData = await res.json();
                 jsonData.every(
                     (el) =>
-                        (el.hinh = "http://localhost:5001/images/" + el.hinh)
+                        (el.hinh = "http://192.168.1.142:5001/images/" + el.hinh)
                 );
-                console.log(jsonData);
                 setLoaihoa(jsonData);
             } catch (err) {
                 console.log(err);
@@ -55,8 +56,14 @@ const Loaihoa = () => {
 
     return (
         <SafeAreaView style={styles.container}>
+            {isLoading && <ActivityIndicator /> }
             {renderHeader()}
-            <Card data={loaihoa} />
+                    <ScrollView style={styles.contain}>
+                        {loaihoa.map((item) => (
+                            <Card navigation={navigation} item={item} key={item._id} />
+                        ))}
+                    </ScrollView>
+            
         </SafeAreaView>
     );
 };

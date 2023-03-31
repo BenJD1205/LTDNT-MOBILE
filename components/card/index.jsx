@@ -1,9 +1,13 @@
-import { View, Text } from "react-native";
+import { TouchableOpacity, Text, Image } from "react-native";
 import React from "react";
+import styles from './card.styles';
 
-const Card = ({ data }) => {
+const Card = ({ item,navigation }) => {
     return (
-        <View>{data.length > 0 ? <View></View> : <Text>No content</Text>}</View>
+        <TouchableOpacity onPress={() => navigation.navigate('Hoa',{maloai:item.maloai})} style={styles.container} >
+            <Image source={{uri:item.hinh}} />
+            <Text>{item.tenloai}</Text>
+        </TouchableOpacity>
     );
 };
 

@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "red",
         flex: 1,
     },
     header: {
@@ -20,6 +19,10 @@ const styles = StyleSheet.create({
         fontWeight: 400,
         lineHeight: 40,
     },
+    contain: {
+        flex: 1,
+        backgroundColor:'white'
+    }
 });
 
 export default styles;

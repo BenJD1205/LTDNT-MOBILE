@@ -1,3 +1,4 @@
 import Card from "./card";
+import CardHoa from './cardHoa';
 
-export { Card };
+export { Card, CardHoa };

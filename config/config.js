@@ -1,5 +1,5 @@
 const config = {
-    backendPort: "http://localhost:5001/api",
+    backendPort: "http://192.168.1.142:5001/api",
 };
 
 export default config;
